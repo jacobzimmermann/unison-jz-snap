@@ -1,5 +1,5 @@
 name: unison-jz
-version: '2.48.4-3'
+version: '2.48.4-4'
 summary: Unison file synchroniser
 description: |
   Unison is a file-synchronization tool. It allows two replicas
@@ -9,12 +9,12 @@ description: |
   to the other.
 
 grade: stable
-confinement: classic
+confinement: strict
 
 apps:
   unison:
-    command: desktop-launch unison-2.48
-    plugs: [unity7, network, home, mount-observe]
+    command: desktop-launch $SNAP/bin/unison-2.48
+    plugs: [unity7, network, home, mount-observe, removable-media]
 
 parts:
   unison:
@@ -29,6 +29,9 @@ parts:
       - chrpath
       - librsvg2-bin
       - imagemagick
+    stage-packages:
+      - gtk2-engines-pixbuf
+      - libpng12-0
     after:
       - desktop-gtk2
     prepare: |
