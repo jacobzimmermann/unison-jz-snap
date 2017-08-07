@@ -19,7 +19,7 @@ apps:
 parts:
   unison:
     plugin: make
-    source: .
+    source: https://www.seas.upenn.edu/~bcpierce/unison//download/releases/stable/unison-2.48.4.tar.gz
     make-parameters:
       - THREADS=true
       - DEBUGGING=false
@@ -32,7 +32,7 @@ parts:
     after:
       - desktop-gtk2
     prepare: |
-      patch -p1 < ../../../makefile-install.patch
+      patch -p2 < ../../../makefile-install.patch
     install: |
       strip $SNAPCRAFT_PART_INSTALL/bin/unison-2.48
 
