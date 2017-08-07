@@ -1,5 +1,5 @@
 name: unison-jz
-version: '2.48.4-2'
+version: '2.48.4-3'
 summary: Unison file synchroniser
 description: |
   Unison is a file-synchronization tool. It allows two replicas
@@ -9,7 +9,7 @@ description: |
   to the other.
 
 grade: stable
-confinement: strict
+confinement: classic
 
 apps:
   unison:
