@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Unison
+Comment=GTK interface for the unison file synchronization tool @VERSION@
+GenericName=File synchronization tool
+Exec=unison-jz.unison
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=${SNAP}/meta/gui/unison.svg
+Categories=Utility;FileTools;GTK;
+StartupWMClass=Unison-gtk
+StartupNotify=true

@@ -1,0 +1,15 @@
+diff --git a/src/Makefile b/src/Makefile
+index 850c148..418178d 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -90,9 +90,7 @@ text:
+ 	$(MAKE) -C .. text
+ 
+ doinstall: $(NAME)$(EXEC_EXT)
+-	-mv $(INSTALLDIR)/$(NAME)$(EXEC_EXT) /tmp/$(NAME)-$(shell echo $$$$)
+-	cp $(NAME)$(EXEC_EXT) $(INSTALLDIR)
+-	cp $(NAME)$(EXEC_EXT) $(INSTALLDIR)$(NAME)-$(MAJORVERSION)$(EXEC_EXT)
++	install -D $(NAME)$(EXEC_EXT) $(DESTDIR)/bin/$(NAME)-$(MAJORVERSION)$(EXEC_EXT)
+ 
+ 
+ ######################################################################

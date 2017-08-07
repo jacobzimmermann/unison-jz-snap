@@ -1,0 +1,50 @@
+name: unison-jz
+version: '2.48.4-2'
+summary: Unison file synchroniser
+description: |
+  Unison is a file-synchronization tool. It allows two replicas
+  of a collection of files and directories to be stored on different
+  hosts (or different disks on the same host), modified separately,
+  and then brought up to date by propagating the changes in each replica
+  to the other.
+
+grade: stable
+confinement: strict
+
+apps:
+  unison:
+    command: desktop-launch unison-2.48
+    plugs: [unity7, network, home, mount-observe]
+
+parts:
+  unison:
+    plugin: make
+    source: .
+    make-parameters:
+      - THREADS=true
+      - DEBUGGING=false
+    build-packages:
+      - ocaml-nox
+      - liblablgtk2-ocaml-dev
+      - chrpath
+      - librsvg2-bin
+      - imagemagick
+    after:
+      - desktop-gtk2
+    prepare: |
+      patch -p1 < ../../../makefile-install.patch
+    install: |
+      strip $SNAPCRAFT_PART_INSTALL/bin/unison-2.48
+
+  desktop-gtk2:
+    prime:
+      - -var
+      - -usr/share/bash-completion
+      - -usr/share/apport
+      - -usr/share/bug
+      - -usr/share/doc
+      - -usr/share/doc-base
+      - -usr/share/lintian
+      - -usr/share/man
+      - -usr/share/pkgconfig
+      - -usr/share/upstart
