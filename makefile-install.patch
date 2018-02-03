@@ -1,15 +1,16 @@
-diff --git a/src/Makefile b/src/Makefile
-index 850c148..418178d 100644
---- a/src/Makefile
-+++ b/src/Makefile
-@@ -90,9 +90,7 @@ text:
- 	$(MAKE) -C .. text
- 
- doinstall: $(NAME)$(EXEC_EXT)
+diff -ruN a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2018-01-27 21:12:13.000000000 +0000
++++ b/src/Makefile	2018-02-03 01:40:47.067574272 +0000
+@@ -85,10 +85,8 @@
+ 	@if [ ! $(NAME) ]; then \
+ 	    echo "makefile variable NAME not bound"; \
+ 	    exit 1 \
+-          ; fi 
 -	-mv $(INSTALLDIR)/$(NAME)$(EXEC_EXT) /tmp/$(NAME)-$(shell echo $$$$)
 -	cp $(NAME)$(EXEC_EXT) $(INSTALLDIR)
 -	cp $(NAME)$(EXEC_EXT) $(INSTALLDIR)$(NAME)-$(MAJORVERSION)$(EXEC_EXT)
++          ; fi
 +	install -D $(NAME)$(EXEC_EXT) $(DESTDIR)/bin/$(NAME)-$(MAJORVERSION)$(EXEC_EXT)
  
- 
  ######################################################################
+ # Demo

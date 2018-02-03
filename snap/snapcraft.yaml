@@ -1,5 +1,5 @@
 name: unison-jz
-version: '2.48.4-4'
+version: '2.51.2'
 summary: Unison file synchroniser
 description: |
   Unison is a file-synchronization tool. It allows two replicas
@@ -13,13 +13,13 @@ confinement: strict
 
 apps:
   unison:
-    command: desktop-launch $SNAP/bin/unison-2.48
-    plugs: [unity7, network, home, mount-observe, removable-media]
+    command: desktop-launch $SNAP/bin/unison-2.51
+    plugs: [desktop, x11, wayland, network, home, mount-observe, removable-media]
 
 parts:
   unison:
     plugin: make
-    source: https://www.seas.upenn.edu/~bcpierce/unison//download/releases/stable/unison-2.48.4.tar.gz
+    source: https://github.com/bcpierce00/unison/archive/v2.51.2.tar.gz
     make-parameters:
       - THREADS=true
       - DEBUGGING=false
@@ -35,9 +35,9 @@ parts:
     after:
       - desktop-gtk2
     prepare: |
-      patch -p2 < ../../../makefile-install.patch
+      patch -p1 < ../../../makefile-install.patch
     install: |
-      strip $SNAPCRAFT_PART_INSTALL/bin/unison-2.48
+      strip $SNAPCRAFT_PART_INSTALL/bin/unison-2.51
 
   desktop-gtk2:
     prime:
